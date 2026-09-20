@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../clientproject1"
+		},
+		{
+			"path": "../clientproject2"
+		},
+		{
+			"path": "../stitch_aether_studio_design_system"
+		}
+	],
+	"settings": {}
+}
