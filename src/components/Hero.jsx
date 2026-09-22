@@ -28,23 +28,25 @@ export default function Hero() {
     <section
       id="top"
       ref={heroRef}
+      className="hero-section"
       style={{
         position: 'relative',
-        minHeight: '100vh',
+        minHeight: '100svh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 'clamp(100px, 14vh, 130px) clamp(14px, 4vw, 24px) 60px',
         textAlign: 'center',
         zIndex: 10,
         overflow: 'hidden',
+        boxSizing: 'border-box',
       }}
     >
       {/* Interactive Transparent WebGL Fluid Shader - Active only in Hero */}
       <HeroFluidShader heroRef={heroRef} />
 
       <div
+        className="hero-content"
         style={{
           maxWidth: '880px',
           margin: '0 auto',
@@ -53,23 +55,23 @@ export default function Hero() {
           alignItems: 'center',
           position: 'relative',
           zIndex: 2,
+          width: '100%',
+          boxSizing: 'border-box',
         }}
       >
         {/* Real Official Badge */}
-        <div style={{ display: 'inline-flex', marginBottom: '24px' }}>
+        <div className="hero-badge-wrap" style={{ display: 'inline-flex' }}>
           <span
+            className="hero-badge"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '9px',
-              padding: '8px 20px',
               borderRadius: '999px',
               background: 'rgba(10, 19, 32, 0.85)',
               border: '1px solid rgba(201, 164, 94, 0.35)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',
               fontFamily: 'JetBrains Mono, monospace',
-              fontSize: '12px',
               letterSpacing: '0.15em',
               color: '#C9A45E',
               textTransform: 'uppercase',
@@ -79,59 +81,53 @@ export default function Hero() {
           >
             <span
               style={{
-                width: '7px',
-                height: '7px',
+                width: '6px',
+                height: '6px',
                 borderRadius: '50%',
                 backgroundColor: '#C9A45E',
               }}
               className="pulse-aether"
             />
-            One-Step Assessment · Futures Markets
+            <span>One-Step Assessment · Futures Markets</span>
           </span>
         </div>
 
         {/* Real Official Headline */}
         <h1
-          className="font-display"
+          className="font-display hero-headline"
           style={{
-            fontSize: 'clamp(2.2rem, 6.5vw, 5.2rem)',
             fontWeight: 800,
-            lineHeight: 1.05,
-            letterSpacing: '-0.035em',
-            margin: '0 0 24px',
+            lineHeight: 1.08,
+            letterSpacing: '-0.03em',
             color: '#F0F6FF',
             textShadow: '0 4px 24px rgba(0,0,0,0.6)',
           }}
         >
-          Trade The Futures<br />
-          Markets With<br />
-          <span className="gold-grad-text">Up to $1M in Capital</span>
+          Trade The Futures Markets <br className="hero-br-desktop" />
+          With <span className="gold-grad-text">Up to $1M in Capital</span>
         </h1>
 
         {/* Real Official Subtitle */}
         <p
+          className="hero-subtitle"
           style={{
-            fontSize: 'clamp(1.05rem, 1.6vw, 1.25rem)',
-            lineHeight: 1.65,
             color: '#C3D2E2',
-            maxWidth: '680px',
-            margin: '0 auto 36px',
+            margin: '0 auto',
             fontWeight: 400,
             textShadow: '0 2px 12px rgba(0,0,0,0.8)',
           }}
         >
-          Prove your skill in a single-phase assessment. Pass once, get funded, and keep up to 90% of your profits. Your edge deserves real capital — start trading with us today.
+          Prove your skill in a single-phase assessment. Pass once, get funded, and keep up to 90% of your profits. Start trading with real capital today.
         </p>
 
         {/* Real CTA Buttons */}
         <div
+          className="hero-cta-group"
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: '16px',
             flexWrap: 'wrap',
-            marginBottom: '44px',
             width: '100%',
           }}
         >
@@ -139,25 +135,21 @@ export default function Hero() {
             href="http://dashboard.flicapital.com/challenges"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-aether-primary"
+            className="btn-aether-primary hero-btn-primary"
             style={{
-              padding: '16px 36px',
-              fontSize: '16px',
               fontWeight: 700,
               borderRadius: '12px',
               letterSpacing: '0.01em',
             }}
           >
             <span>Start Assessment</span>
-            <ArrowRight size={18} />
+            <ArrowRight size={17} />
           </a>
 
           <a
             href="#how"
-            className="btn-aether-ghost"
+            className="btn-aether-ghost hero-btn-ghost"
             style={{
-              padding: '16px 32px',
-              fontSize: '16px',
               fontWeight: 600,
               borderRadius: '12px',
               background: 'rgba(10, 19, 32, 0.75)',
@@ -170,35 +162,34 @@ export default function Hero() {
 
         {/* Official Continuous Benefits Marquee */}
         <div
+          className="hero-marquee-container"
           style={{
             overflow: 'hidden',
             width: '100%',
             maxWidth: '820px',
-            margin: '0 auto 36px',
+            margin: '0 auto',
             maskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)',
             WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)',
           }}
         >
-          <div className="aether-marquee-track" style={{ gap: '12px' }}>
+          <div className="aether-marquee-track" style={{ gap: '10px' }}>
             {[...BENEFITS, ...BENEFITS, ...BENEFITS].map((item, idx) => (
               <span
                 key={idx}
-                className="label-caps"
+                className="label-caps hero-benefit-pill"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '6px',
-                  padding: '8px 16px',
                   borderRadius: '999px',
                   background: 'rgba(10, 19, 32, 0.8)',
                   border: '1px solid rgba(185, 229, 255, 0.14)',
                   backdropFilter: 'blur(12px)',
-                  fontSize: '11px',
                   color: '#F0F6FF',
                   whiteSpace: 'nowrap',
                 }}
               >
-                <Check size={13} color="#C9A45E" strokeWidth={3} />
+                <Check size={12} color="#C9A45E" strokeWidth={3} />
                 {item}
               </span>
             ))}
@@ -207,33 +198,29 @@ export default function Hero() {
 
         {/* Futures Contract Chips */}
         <div
+          className="hero-contracts-wrap"
           style={{
             display: 'flex',
             flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: '10px',
-            marginBottom: '32px',
           }}
         >
           {CONTRACTS.map((contract) => (
             <span
               key={contract.symbol}
-              className="label-caps"
+              className="label-caps hero-contract-chip"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px',
-                padding: '7px 16px',
                 borderRadius: '8px',
                 background: 'rgba(10, 19, 32, 0.72)',
                 border: '1px solid rgba(185, 229, 255, 0.12)',
                 backdropFilter: 'blur(10px)',
-                fontSize: '12px',
               }}
             >
               <span style={{ color: '#C9A45E', fontWeight: 700 }}>{contract.symbol}</span>
-              <span style={{ color: 'rgba(240, 246, 255, 0.55)', letterSpacing: '0.05em' }}>· {contract.label}</span>
+              <span className="contract-label" style={{ color: 'rgba(240, 246, 255, 0.55)', letterSpacing: '0.05em' }}>· {contract.label}</span>
             </span>
           ))}
         </div>
@@ -241,24 +228,149 @@ export default function Hero() {
         {/* Subtle Scroll Hint */}
         <a
           href="#stats"
+          className="hero-scroll-hint hover:text-gold"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '6px',
             color: '#8093A8',
             textDecoration: 'none',
-            fontSize: '11px',
             fontFamily: 'JetBrains Mono, monospace',
             letterSpacing: '0.15em',
             textTransform: 'uppercase',
             transition: 'color 0.2s ease',
           }}
-          className="hover:text-gold"
         >
           <span>Scroll to explore</span>
           <ChevronDown size={14} color="#79D5F2" className="animate-bounce" />
         </a>
       </div>
+
+      <style>{`
+        /* Responsive Mobile Fit Styles */
+        @media (max-width: 768px) {
+          .hero-section {
+            padding: clamp(68px, 9vh, 82px) 14px 16px !important;
+            justifyContent: center !important;
+          }
+          .hero-badge-wrap {
+            margin-bottom: 10px !important;
+          }
+          .hero-badge {
+            padding: 5px 14px !important;
+            font-size: 10px !important;
+            gap: 7px !important;
+          }
+          .hero-headline {
+            font-size: clamp(1.8rem, 6.2vw, 2.6rem) !important;
+            margin: 0 0 10px !important;
+            line-height: 1.12 !important;
+          }
+          .hero-br-desktop {
+            display: none !important;
+          }
+          .hero-subtitle {
+            font-size: 13px !important;
+            line-height: 1.45 !important;
+            max-width: 440px !important;
+            margin: 0 auto 14px !important;
+          }
+          .hero-cta-group {
+            gap: 8px !important;
+            margin-bottom: 14px !important;
+          }
+          .hero-btn-primary {
+            padding: 11px 22px !important;
+            font-size: 13.5px !important;
+          }
+          .hero-btn-ghost {
+            padding: 11px 18px !important;
+            font-size: 13.5px !important;
+          }
+          .hero-marquee-container {
+            margin: 0 auto 12px !important;
+          }
+          .hero-benefit-pill {
+            padding: 5px 12px !important;
+            font-size: 9.5px !important;
+          }
+          .hero-contracts-wrap {
+            gap: 6px !important;
+            margin-bottom: 14px !important;
+          }
+          .hero-contract-chip {
+            padding: 4px 9px !important;
+            font-size: 11px !important;
+          }
+          .contract-label {
+            display: none !important;
+          }
+          .hero-scroll-hint {
+            font-size: 10px !important;
+          }
+        }
+
+        @media (min-width: 769px) {
+          .hero-section {
+            padding: 120px 24px 60px !important;
+          }
+          .hero-badge-wrap {
+            margin-bottom: 24px !important;
+          }
+          .hero-badge {
+            padding: 8px 20px !important;
+            font-size: 12px !important;
+            gap: 9px !important;
+          }
+          .hero-headline {
+            font-size: clamp(2.8rem, 5.5vw, 5.2rem) !important;
+            margin: 0 0 24px !important;
+          }
+          .hero-br-desktop {
+            display: inline !important;
+          }
+          .hero-subtitle {
+            font-size: clamp(1.05rem, 1.6vw, 1.25rem) !important;
+            line-height: 1.65 !important;
+            max-width: 680px !important;
+            margin: 0 auto 36px !important;
+          }
+          .hero-cta-group {
+            gap: 16px !important;
+            margin-bottom: 40px !important;
+          }
+          .hero-btn-primary {
+            padding: 16px 36px !important;
+            font-size: 16px !important;
+          }
+          .hero-btn-ghost {
+            padding: 16px 32px !important;
+            font-size: 16px !important;
+          }
+          .hero-marquee-container {
+            margin: 0 auto 32px !important;
+          }
+          .hero-benefit-pill {
+            padding: 8px 16px !important;
+            font-size: 11px !important;
+          }
+          .hero-contracts-wrap {
+            gap: 10px !important;
+            margin-bottom: 30px !important;
+          }
+          .hero-contract-chip {
+            padding: 7px 16px !important;
+            font-size: 12px !important;
+            gap: 8px !important;
+          }
+          .contract-label {
+            display: inline !important;
+          }
+          .hero-scroll-hint {
+            font-size: 11px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
