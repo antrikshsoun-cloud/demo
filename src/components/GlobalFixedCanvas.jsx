@@ -117,34 +117,27 @@ export default function GlobalFixedCanvas() {
 
     if (!imgA || !imgA.complete || imgA.naturalWidth === 0) return;
 
-    // High-Precision Adaptive Aspect Ratio calculations:
-    // On portrait viewports (mobile/tablets), avoid aggressive crop that cuts off 70%+ of the 3D scene.
-    // Fit width with subtle bleed so 100% of the 3D coin & visual sequence is fully visible on mobile!
+        // High-Precision True Full-Screen Cover across ALL screen sizes (Mobile, Tablets, Desktop):
+    // Height and width fully cover 100% of the viewport edge-to-edge: ZERO black blank space above, below, or on edges!
     const imgAspect = 1920 / 1080;
     const screenAspect = viewportW / viewportH;
-    const isPortrait = viewportW < viewportH;
     let drawW, drawH, drawX, drawY;
 
-    if (isPortrait) {
-      // Mobile portrait mode: show full width of the 3D sequence so 100% is visible
-      drawW = viewportW * 1.1;
-      drawH = drawW / imgAspect;
-      drawX = (viewportW - drawW) / 2;
-      // Positioned naturally in the upper-mid focal zone where the eye looks
-      drawY = (viewportH - drawH) * 0.42;
+    if (screenAspect > imgAspect) {
+      // Screen is wider than 16:9
+      drawW = viewportW;
+      drawH = viewportW / imgAspect;
+      drawX = 0;
+      drawY = (viewportH - drawH) / 2;
     } else {
-      // Landscape & desktop mode: full bleed cover
-      if (screenAspect > imgAspect) {
-        drawW = viewportW;
-        drawH = viewportW / imgAspect;
-        drawX = 0;
-        drawY = (viewportH - drawH) / 2;
-      } else {
-        drawH = viewportH;
-        drawW = viewportH * imgAspect;
-        drawX = (viewportW - drawW) / 2;
-        drawY = 0;
-      }
+      // Screen is taller than 16:9 (Mobile Portrait, Tablets, Vertical Displays)
+      // Height matches 100% of viewport height: ZERO blank space above or below!
+      drawH = viewportH;
+      drawW = viewportH * imgAspect;
+      // Focus on the 3D subject in the center (around X=890 in the 1920 source frame)
+      const focalRatio = 0.475; // Perfectly centers the 3D coin & visual in mobile portrait
+      drawX = Math.min(0, Math.max(viewportW - drawW, (viewportW / 2) - (drawW * focalRatio)));
+      drawY = 0;
     }
 
     // Base frame render
@@ -229,6 +222,8 @@ export default function GlobalFixedCanvas() {
       style={{
         position: 'fixed',
         inset: 0,
+        width: '100%',
+        height: '100%',
         zIndex: 0,
         pointerEvents: 'none',
         overflow: 'hidden',
@@ -244,15 +239,6 @@ export default function GlobalFixedCanvas() {
           height: '100vh',
           filter: 'contrast(1.08) saturate(1.22) brightness(1.04)',
           willChange: 'contents',
-        }}
-      />
-      {/* Soft vignette overlay so the 3D canvas blends smoothly into #050A12 on mobile and tall screens */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          pointerEvents: 'none',
-          background: 'radial-gradient(ellipse at 50% 45%, transparent 40%, rgba(5, 10, 18, 0.75) 85%, #050A12 100%), linear-gradient(180deg, #050A12 0%, transparent 12%, transparent 88%, #050A12 100%)',
         }}
       />
     </div>
