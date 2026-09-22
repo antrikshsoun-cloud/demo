@@ -336,7 +336,7 @@ export default function PlanMatrix() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
               gap: '24px',
               alignItems: 'stretch',
             }}
@@ -612,7 +612,7 @@ export default function PlanMatrix() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
               gap: '24px',
               marginBottom: '32px',
             }}
@@ -654,7 +654,7 @@ export default function PlanMatrix() {
           <div
             className="aether-glass-gold"
             style={{
-              padding: '28px 34px',
+              padding: 'clamp(20px, 4vw, 28px) clamp(16px, 4vw, 34px)',
               display: 'flex',
               flexDirection: 'row',
               alignItems: 'center',

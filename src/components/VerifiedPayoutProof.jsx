@@ -67,7 +67,7 @@ export default function VerifiedPayoutProof() {
                   gap: '16px',
                   padding: '14px',
                   borderRadius: '16px',
-                  width: '380px',
+                  width: 'min(340px, 85vw)',
                   flexShrink: 0,
                   transition: 'all 0.35s cubic-bezier(0.2, 0.7, 0.3, 1)',
                   cursor: 'pointer',

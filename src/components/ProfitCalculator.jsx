@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Calculator, ArrowRight, ShieldCheck, Zap, DollarSign } from 'lucide-react';
-import WebGLShader from './WebGLShader';
 import SpotlightCard from './SpotlightCard';
 import { playRelayClick, playSliderPurr } from '../utils/audioHaptics';
 
@@ -73,7 +72,7 @@ export default function ProfitCalculator() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
             gap: '32px',
             alignItems: 'stretch',
           }}
@@ -212,9 +211,9 @@ export default function ProfitCalculator() {
             </div>
           </SpotlightCard>
 
-          {/* Right Column: Live Payout Output + WebGL Shader Preview */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <SpotlightCard style={{ padding: '36px 32px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          {/* Right Column: Live Payout Output (clean, balanced, mobile-optimized) */}
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <SpotlightCard style={{ padding: 'clamp(24px, 4vw, 36px)', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '20px' }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                   <Zap size={16} color="#C9A45E" />
@@ -226,12 +225,13 @@ export default function ProfitCalculator() {
                 <div
                   className="font-display font-mono"
                   style={{
-                    fontSize: 'clamp(2.5rem, 4vw, 3.8rem)',
+                    fontSize: 'clamp(2.4rem, 6vw, 3.8rem)',
                     fontWeight: 900,
                     lineHeight: 1,
                     color: '#F3CA65',
                     margin: '8px 0 16px',
                     textShadow: '0 0 30px rgba(243, 202, 101, 0.35)',
+                    wordBreak: 'break-word',
                   }}
                 >
                   ${traderShare.toLocaleString()}
@@ -242,12 +242,14 @@ export default function ProfitCalculator() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    padding: '12px 16px',
+                    padding: '12px 14px',
                     borderRadius: '10px',
                     background: 'rgba(201, 164, 94, 0.08)',
                     border: '1px solid rgba(201, 164, 94, 0.2)',
                     fontSize: '13px',
-                    marginBottom: '24px',
+                    marginBottom: '20px',
+                    flexWrap: 'wrap',
+                    gap: '6px',
                   }}
                 >
                   <span style={{ color: 'rgba(240, 246, 255, 0.7)' }}>FLI Capital Performance Fee (10%):</span>
@@ -256,13 +258,13 @@ export default function ProfitCalculator() {
                   </span>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '28px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'rgba(240, 246, 255, 0.8)' }}>
-                    <ShieldCheck size={16} color="#C9A45E" />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '13px', color: 'rgba(240, 246, 255, 0.8)' }}>
+                    <ShieldCheck size={16} color="#C9A45E" style={{ flexShrink: 0, marginTop: '2px' }} />
                     <span>Daily automated payouts via RiseWorks or Direct Crypto</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'rgba(240, 246, 255, 0.8)' }}>
-                    <ShieldCheck size={16} color="#C9A45E" />
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '13px', color: 'rgba(240, 246, 255, 0.8)' }}>
+                    <ShieldCheck size={16} color="#C9A45E" style={{ flexShrink: 0, marginTop: '2px' }} />
                     <span>No daily drawdown limit · Only end-of-day trailing balance</span>
                   </div>
                 </div>
@@ -279,67 +281,19 @@ export default function ProfitCalculator() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '10px',
-                  padding: '16px 28px',
+                  padding: '15px 24px',
                   fontSize: '15px',
                   fontWeight: 800,
                   borderRadius: '12px',
                   textDecoration: 'none',
                   boxShadow: '0 8px 30px -4px rgba(201, 164, 94, 0.45)',
+                  width: '100%',
                 }}
               >
                 <span>Get Started on {currentTier.size} Plan</span>
                 <ArrowRight size={17} />
               </a>
             </SpotlightCard>
-
-            {/* Embedded 21st.dev WebGL Liquid Shader Interactive Window */}
-            <div
-              style={{
-                height: '140px',
-                borderRadius: '20px',
-                border: '1px solid rgba(201, 164, 94, 0.25)',
-                position: 'relative',
-                overflow: 'hidden',
-                boxShadow: '0 12px 30px -8px rgba(0,0,0,0.7)',
-              }}
-            >
-              <WebGLShader />
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '0 24px',
-                  pointerEvents: 'none',
-                  background: 'linear-gradient(90deg, rgba(5, 10, 18, 0.82) 0%, rgba(5, 10, 18, 0.45) 50%, rgba(5, 10, 18, 0.82) 100%)',
-                }}
-              >
-                <div>
-                  <span className="label-caps" style={{ fontSize: '9.5px', color: '#F3CA65', display: 'block' }}>
-                    Institutional Execution Engine
-                  </span>
-                  <span style={{ fontSize: '13px', fontWeight: 700, color: '#FFFFFF' }}>
-                    GPU-Accelerated WebGL Prop Core
-                  </span>
-                </div>
-                <div
-                  style={{
-                    padding: '6px 12px',
-                    borderRadius: '999px',
-                    background: 'rgba(201, 164, 94, 0.2)',
-                    border: '1px solid rgba(201, 164, 94, 0.4)',
-                    fontSize: '11px',
-                    color: '#F3CA65',
-                    fontWeight: 700,
-                  }}
-                >
-                  Interactive Fluid Canvas
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
 

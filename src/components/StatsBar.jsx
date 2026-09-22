@@ -9,7 +9,7 @@ const STATS = [
 
 export default function StatsBar() {
   return (
-    <section id="stats" style={{ position: 'relative', zIndex: 10, padding: '20px 24px 60px' }}>
+    <section id="stats" style={{ position: 'relative', zIndex: 10, padding: '20px clamp(14px, 3vw, 24px) 50px' }}>
       <div
         style={{
           maxWidth: '1000px',
@@ -20,7 +20,7 @@ export default function StatsBar() {
           className="aether-glass"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))',
             padding: '12px 8px',
             borderRadius: '20px',
             boxShadow: '0 20px 50px -10px rgba(0,0,0,0.5)',

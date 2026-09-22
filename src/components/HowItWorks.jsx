@@ -57,7 +57,7 @@ export default function HowItWorks() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
             gap: '32px',
             alignItems: 'stretch',
           }}
@@ -139,7 +139,7 @@ export default function HowItWorks() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))',
               gap: '18px',
             }}
           >
@@ -260,7 +260,7 @@ export default function HowItWorks() {
           className="aether-glass"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))',
             padding: '24px',
             gap: '24px',
             borderRadius: '16px',

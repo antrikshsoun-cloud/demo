@@ -67,7 +67,7 @@ export default function Navbar({ onOpenTerminal }) {
           style={{
             maxWidth: '1240px',
             margin: '0 auto',
-            padding: '16px 24px',
+            padding: 'clamp(12px, 3vw, 16px) clamp(12px, 4vw, 24px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -101,7 +101,7 @@ export default function Navbar({ onOpenTerminal }) {
           </nav>
 
           {/* Action CTAs & Controls */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(8px, 2vw, 14px)' }}>
             {/* Audio Haptics Toggle Button */}
             <button
               type="button"
@@ -175,8 +175,8 @@ export default function Navbar({ onOpenTerminal }) {
               rel="noopener noreferrer"
               className="btn-aether-primary"
               style={{
-                padding: '9px 20px',
-                fontSize: '13.5px',
+                padding: 'clamp(7px, 2vw, 9px) clamp(12px, 3vw, 20px)',
+                fontSize: 'clamp(12px, 2vw, 13.5px)',
                 borderRadius: '8px',
               }}
             >
@@ -212,7 +212,7 @@ export default function Navbar({ onOpenTerminal }) {
               borderTop: '1px solid rgba(185, 229, 255, 0.1)',
               display: 'flex',
               flexDirection: 'column',
-              gap: '14px',
+              gap: 'clamp(8px, 2vw, 14px)',
             }}
           >
             <button

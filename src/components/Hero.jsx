@@ -35,7 +35,7 @@ export default function Hero() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '130px 24px 70px',
+        padding: 'clamp(100px, 14vh, 130px) clamp(14px, 4vw, 24px) 60px',
         textAlign: 'center',
         zIndex: 10,
         overflow: 'hidden',
@@ -94,7 +94,7 @@ export default function Hero() {
         <h1
           className="font-display"
           style={{
-            fontSize: 'clamp(2.7rem, 6vw, 5.2rem)',
+            fontSize: 'clamp(2.2rem, 6.5vw, 5.2rem)',
             fontWeight: 800,
             lineHeight: 1.05,
             letterSpacing: '-0.035em',

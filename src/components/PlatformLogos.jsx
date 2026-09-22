@@ -71,7 +71,7 @@ export default function PlatformLogos() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   height: '100px',
-                  minWidth: '220px',
+                  minWidth: 'min(180px, 55vw)',
                   padding: '0 32px',
                   textDecoration: 'none',
                   transition: 'all 0.3s ease',
